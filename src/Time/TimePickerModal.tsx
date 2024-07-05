@@ -101,7 +101,7 @@ export function TimePickerModal({
     getMinutes(minutes)
   )
 
-  if (inputType === inputTypes.keyboard && !label) {
+  if (inputType === inputTypes.keyboard && label === undefined) {
     labelText = 'Enter time'
   }
 
