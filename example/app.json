@@ -18,6 +18,9 @@
     "androidStatusBar": {
       "translucent": true
     },
+    "extra": {
+      "supportsRTL": true,
+    },
     "web": {
       "favicon": "./favicon.png",
       "name": "React Native Paper Dates",

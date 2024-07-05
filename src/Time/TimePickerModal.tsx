@@ -58,6 +58,7 @@ export function TimePickerModal({
   use24HourClock,
   inputFontSize,
   defaultInputType,
+  rtl,
 }: {
   locale?: undefined | string
   label?: string
@@ -75,6 +76,7 @@ export function TimePickerModal({
   use24HourClock?: boolean
   inputFontSize?: number
   defaultInputType?: PossibleInputTypes
+  rtl?: boolean
 }) {
   const theme = useTheme()
   const defaultUppercase = !theme.isV3
@@ -205,6 +207,7 @@ export function TimePickerModal({
                   minutes={localMinutes}
                   onChange={onChange}
                   onFocusInput={onFocusInput}
+                  rtl={rtl}
                 />
               </View>
               <View style={styles.bottom}>

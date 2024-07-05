@@ -30,6 +30,7 @@ function TimeInputs({
   is24Hour,
   inputFontSize,
   locale,
+  rtl,
 }: {
   inputType: PossibleInputTypes
   focused: PossibleClockTypes
@@ -44,6 +45,7 @@ function TimeInputs({
   is24Hour: boolean
   inputFontSize?: number
   locale?: string
+  rtl?: boolean
 }) {
   const startInput = React.useRef<TextInputNative | null>(null)
   const endInput = React.useRef<TextInputNative | null>(null)
@@ -78,6 +80,7 @@ function TimeInputs({
       style={[
         styles.inputContainer,
         isLandscape && styles.inputContainerLandscape,
+        { flexDirection: rtl ? 'row-reverse' : 'row' },
       ]}
     >
       <View style={styles.column}>

@@ -57,21 +57,27 @@ exports[`renders AnalogClock 1`] = `
   >
     <View
       style={
-        [
-          {
-            "borderRadius": 24,
-            "bottom": -23,
-            "height": 48,
-            "position": "absolute",
-            "right": 0,
-            "width": 48,
-          },
-          {
-            "backgroundColor": "rgba(103, 80, 164, 1)",
-          },
-        ]
+        {
+          "flexDirection": "row-reverse",
+        }
       }
-    />
+    >
+      <View
+        style={
+          [
+            {
+              "borderRadius": 24,
+              "bottom": 23,
+              "height": 48,
+              "width": 48,
+            },
+            {
+              "backgroundColor": "rgba(103, 80, 164, 1)",
+            },
+          ]
+        }
+      />
+    </View>
   </View>
   <View
     pointerEvents="none"

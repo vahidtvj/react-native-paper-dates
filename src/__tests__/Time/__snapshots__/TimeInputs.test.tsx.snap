@@ -9,6 +9,9 @@ exports[`renders TimeInputs 1`] = `
         "flexDirection": "row",
       },
       false,
+      {
+        "flexDirection": "row",
+      },
     ]
   }
 >

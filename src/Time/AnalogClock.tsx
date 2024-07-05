@@ -29,6 +29,7 @@ function AnalogClock({
   focused,
   is24Hour,
   onChange,
+  rtl,
 }: {
   hours: number
   minutes: number
@@ -39,6 +40,7 @@ function AnalogClock({
     minutes: number
     focused?: undefined | PossibleClockTypes
   }) => any
+  rtl?: boolean
 }) {
   const theme = useTheme()
   const { mode } = React.useContext(DisplayModeContext)
@@ -163,9 +165,11 @@ function AnalogClock({
         ]}
         pointerEvents="none"
       >
-        <View
-          style={[styles.endPoint, { backgroundColor: theme.colors.primary }]}
-        />
+        <View style={{ flexDirection: rtl ? 'row' : 'row-reverse' }}>
+          <View
+            style={[styles.endPoint, { backgroundColor: theme.colors.primary }]}
+          />
+        </View>
       </View>
       <View
         style={[StyleSheet.absoluteFill, styles.center]}
@@ -182,8 +186,8 @@ function AnalogClock({
       </View>
       <AnimatedClockSwitcher
         focused={focused}
-        hours={<AnalogClockHours is24Hour={is24Hour} hours={hours} />}
-        minutes={<AnalogClockMinutes minutes={minutes} />}
+        hours={<AnalogClockHours is24Hour={is24Hour} hours={hours} rtl={rtl} />}
+        minutes={<AnalogClockMinutes minutes={minutes} rtl={rtl} />}
       />
     </View>
   )
@@ -207,9 +211,8 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     height: 48,
     width: 48,
-    position: 'absolute',
-    right: 0,
-    bottom: -23,
+    // right: 0,
+    bottom: 23,
   },
   line: {
     position: 'absolute',

@@ -17,6 +17,9 @@ exports[`renders TimePicker 1`] = `
           "flexDirection": "row",
         },
         false,
+        {
+          "flexDirection": "row",
+        },
       ]
     }
   >

@@ -7,12 +7,20 @@ import { useTextColorOnPrimary } from '../utils'
 function AnalogClockHours({
   is24Hour,
   hours,
+  rtl,
 }: {
   is24Hour: boolean
   hours: number
+  rtl?: boolean
 }) {
-  const outerRange = getHourNumbers(false, circleSize, 12, 12)
-  const innerRange = getHourNumbers(true, circleSize, 12, 12)
+  const _outerRange = getHourNumbers(false, circleSize, 12, 12)
+  const outerRange = rtl
+    ? [_outerRange[11], ..._outerRange.slice(0, -1)].reverse()
+    : _outerRange
+  const _innerRange = getHourNumbers(true, circleSize, 12, 12)
+  const innerRange = rtl
+    ? [_innerRange[11], ..._innerRange.slice(0, -1)].reverse()
+    : _innerRange
   const color = useTextColorOnPrimary()
 
   return (

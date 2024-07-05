@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
   useColorScheme,
   StatusBar,
+  I18nManager,
 } from 'react-native'
 import {
   SafeAreaProvider,
@@ -113,6 +114,11 @@ function App({
     minutes: number | undefined
   }>({ hours: undefined, minutes: undefined })
   const [locale, setLocale] = useState('en-GB')
+  const isRTL = I18nManager.isRTL
+  function setRTL(rtl: boolean) {
+    I18nManager.allowRTL(rtl)
+    I18nManager.forceRTL(rtl)
+  }
   const [presentationStyle, setPresentationStyle] =
     useState<(typeof presentationStyles)[number]>('overFullScreen')
   const [timeOpen, setTimeOpen] = useState(false)
@@ -353,6 +359,39 @@ function App({
               )
             })}
           </View>
+          <Divider style={styles.marginVerticalEight} />
+          <Text
+            maxFontSizeMultiplier={maxFontSizeMultiplier}
+            style={[styles.marginVerticalEight, styles.bold]}
+          >
+            Direction
+          </Text>
+          <Paragraph
+            maxFontSizeMultiplier={maxFontSizeMultiplier}
+            style={styles.marginBottomEight}
+          >
+            You need to fully close and reopen the app for this to take effect.
+          </Paragraph>
+          <View style={styles.chipContainer}>
+            <Chip
+              compact
+              key={'ltr'}
+              selected={isRTL === false}
+              onPress={() => setRTL(false)}
+              style={styles.chip}
+            >
+              LTR
+            </Chip>
+            <Chip
+              compact
+              key={'rtl'}
+              selected={isRTL === true}
+              onPress={() => setRTL(true)}
+              style={styles.chip}
+            >
+              RTL
+            </Chip>
+          </View>
           <Divider style={styles.marginTopSixteen} />
           <List.Section>
             <View style={[styles.row, styles.marginVerticalEight]}>
@@ -561,6 +600,7 @@ function App({
         onConfirm={onConfirmTime}
         hours={time.hours}
         minutes={time.minutes}
+        rtl={I18nManager.isRTL}
       />
     </>
   )
